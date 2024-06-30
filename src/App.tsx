@@ -129,7 +129,7 @@ function App() {
                   </div>
                   <div className="flex flex-col items-center md:items-start">
                     <h2 className="text-3xl font-semibold">
-                      {weatherData.current.temp_c} &deg;
+                      {weatherData.current.temp_c}&deg;
                     </h2>
                     <p className="font-medium">Temperature</p>
                   </div>
@@ -219,7 +219,7 @@ function App() {
                             alt="Weather icon"
                           />
                           <h2 className="text-xl font-semibold">
-                            {day.avgtemp_c} &deg;
+                            {day.avgtemp_c}&deg;
                           </h2>
                         </div>
                       );
