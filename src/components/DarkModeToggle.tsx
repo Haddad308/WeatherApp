@@ -3,7 +3,7 @@ import { FaMoon } from "react-icons/fa";
 import { MdSunny } from "react-icons/md";
 
 const DarkModeToggle = () => {
-  const [dark, setDark] = useState(new Date().getHours() < 12 ? false : true);
+  const [dark, setDark] = useState(false);
 
   const darkModeHandler = () => {
     setDark(!dark);
