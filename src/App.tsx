@@ -96,7 +96,6 @@ function App() {
                 {/* Main Card */}
                 <div className="bg-[#315e99] shadow-lg bg-opacity-30 gap-4  p-5 px-7 flex flex-col md:flex-row justify-between items-center rounded-3xl">
                   <div>
-                    {/* <h1>dsad</h1> */}
                     <img
                       src={weatherData.current.condition.icon}
                       alt="Weather condition"
@@ -162,7 +161,7 @@ function App() {
                           .split(" ")[1];
                         return (
                           <div
-                            className="flex md:flex-col items-center md:gap-2"
+                            className="flex md:flex-col justify-between items-center md:gap-2"
                             key={index}
                           >
                             <p className="text-xl uppercase font-semibold">
