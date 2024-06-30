@@ -181,6 +181,7 @@ function App() {
                   </div>
                 </div>
               </div>
+              {/* 3 days' Forcast*/}
               <div className="bg-[#315e99] shadow-lg bg-opacity-30 p-5 rounded-3xl col-span-2 flex flex-col gap-5 mb-10 md:mb-0">
                 <h2 className="font-bold mb-5 text-2xl">3 DAYS' FORECAST</h2>
                 <div className="flex flex-col justify-between">
