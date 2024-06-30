@@ -119,9 +119,9 @@ function App() {
                       width={120}
                     />
                   </div>
-                  <div className="flex flex-col items-center md:items-start">
+                  <div className="flex flex-col items-center  md:items-start ">
                     <h2 className="text-3xl font-semibold text-center">
-                      {weatherData.location.name}
+                      {weatherData.location.name.slice(0, 15)}
                     </h2>
                     <p className="font-medium">
                       {weatherData.location.country}
