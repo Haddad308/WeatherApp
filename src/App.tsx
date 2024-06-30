@@ -4,6 +4,7 @@ import { getWeatherData } from "./handlers";
 import { ClipLoader } from "react-spinners";
 import errorImage from "./assets/no-result-found.png";
 
+// Define interfaces for WeatherCondition and WeatherData to ensure type safety
 interface WeatherCondition {
   text: string;
   icon: string;
@@ -40,6 +41,7 @@ interface WeatherData {
 }
 
 function App() {
+  // Initialize state variables
   const [weatherData, setWeatherData] = useState<WeatherData>({
     current: {
       temp_c: 0,
@@ -68,6 +70,7 @@ function App() {
   const [error, setError] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("cairo");
 
+  // Fetch weather data whenever searchQuery changes
   useEffect(() => {
     getWeatherData(searchQuery, setWeatherData, setIsLoading, setError);
   }, [searchQuery]);
@@ -75,26 +78,40 @@ function App() {
   return (
     <div className="relative">
       {isLoading && (
-        <div className="text-white flex justify-center items-center  absolute h-screen w-screen bg-opacity-70 bg-black">
+        <div className="text-white flex justify-center items-center absolute h-screen w-screen bg-opacity-70 bg-black">
           <ClipLoader size={150} color="white" />
         </div>
       )}
 
-      <div className=" bg-gradient-to-b from-[#bde8ff] to-white px-10 dark:from-[#253f63] dark:to-gray-400  md:h-screen">
+      <div className="bg-gradient-to-b from-[#bde8ff] to-white px-10 dark:from-[#253f63] dark:to-gray-400 md:h-screen">
         <div>
           <Header setSearchQuery={setSearchQuery} />
+
           {error ? (
             <div className="h-96 w-full flex flex-col justify-center items-center">
-              <img src={errorImage} alt="" />
+              <img src={errorImage} alt="No result found" />
               <h2 className="text-2xl font-bold text-blue-950 dark:text-white">
-                Sorry No result found :(
+                Sorry, no result found :(
+              </h2>
+            </div>
+          ) : !weatherData ? (
+            <div className="h-96 w-full flex flex-col justify-center items-center">
+              <img
+                src={
+                  "https://cdn.iconscout.com/icon/free/png-256/free-data-not-found-1965034-1662569.png?f=webp"
+                }
+                alt="No result found"
+              />
+              <h2 className="text-xl font-bold text-blue-950 dark:text-white">
+                Sorry, no result found. Please check your internet connection or
+                try again later.
               </h2>
             </div>
           ) : (
             <div className="md:grid flex flex-col grid-cols-6 gap-5 text-blue-950 dark:text-white mt-10">
               <div className="col-span-4 flex flex-col gap-5">
                 {/* Main Card */}
-                <div className="bg-[#315e99] shadow-lg bg-opacity-30 gap-4  p-5 px-7 flex flex-col md:flex-row justify-between items-center rounded-3xl">
+                <div className="bg-[#315e99] shadow-lg bg-opacity-30 gap-4 p-5 px-7 flex flex-col md:flex-row justify-between items-center rounded-3xl">
                   <div>
                     <img
                       src={weatherData.current.condition.icon}
@@ -103,7 +120,7 @@ function App() {
                     />
                   </div>
                   <div className="flex flex-col items-center md:items-start">
-                    <h2 className="text-3xl font-semibold">
+                    <h2 className="text-3xl font-semibold text-center">
                       {weatherData.location.name}
                     </h2>
                     <p className="font-medium">
@@ -181,7 +198,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              {/* 3 days' Forcast*/}
+              {/* 3 Days' Forecast */}
               <div className="bg-[#315e99] shadow-lg bg-opacity-30 p-5 rounded-3xl col-span-2 flex flex-col gap-5 mb-10 md:mb-0">
                 <h2 className="font-bold mb-5 text-2xl">3 DAYS' FORECAST</h2>
                 <div className="flex flex-col justify-between">
@@ -195,7 +212,7 @@ function App() {
                           className="flex items-center justify-between gap-2"
                           key={index}
                         >
-                          <p className="text-xl font-semibold ">{dayName}</p>
+                          <p className="text-xl font-semibold">{dayName}</p>
                           <img
                             src={day.condition.icon}
                             width={100}
