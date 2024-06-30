@@ -88,7 +88,7 @@ function App() {
           <Header setSearchQuery={setSearchQuery} />
 
           {error ? (
-            <div className="h-96 w-full flex flex-col justify-center items-center">
+            <div className=" w-full h-[500px] flex flex-col justify-center items-center">
               <img src={errorImage} alt="No result found" />
               <h2 className="text-2xl font-bold text-blue-950 dark:text-white">
                 Sorry, no result found :(
